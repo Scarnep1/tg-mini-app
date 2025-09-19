@@ -1,1 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой Apps Бот</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="apps-grid" id="apps-grid">
+        <!-- Иконки будут создаваться здесь автоматически скриптом app.js -->
+    </div>
 
+    <nav class="bottom-menu">
+        <button class="menu-btn" onclick="showApps('provее')">Провее</button>
+        <button class="menu-btn" onclick="showApps('exchanges')">Биржи</button>
+        <button class="menu-btn" onclick="showApps('channels')">Каналы</button>
+    </nav>
+
+    <script src="app.js"></script>
+</body>
+</html>
