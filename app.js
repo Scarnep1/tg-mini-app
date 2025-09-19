@@ -1,63 +1,46 @@
-const appsDatabase = {
-    'exchanges': [
-        { name: "Binance", url: "https://binance.com", icon: "images/i (2).webp" },
-        { name: "Bybit", url: "https://bybit.com", icon: "images/i (2).webp" }
-    ],
-    'channels': [
-        { name: "Moh kawan", url: "https://t.me/chat_hamster_gamedev", icon: "images/i (3).webp" },
-        { name: "Kpunro новости", url: "https://t.me/hamster_king_ru", icon: "images/i (2).webp" },
-        { name: "Tpekhyun", url: "https://t.me/hamster_kombat_gamedev_heroes", icon: "images/i (2).webp" }
-    ]
-};
+const MainButton = window.Telegram.WebApp.MainButton;
+const BackButton = window.Telegram.WebApp.BackButton;
 
-function showApps(sectionName) {
-    console.log("Показываем раздел:", sectionName);
-    const appsGrid = document.getElementById('apps-grid');
-    appsGrid.innerHTML = "";
-    const appsToShow = appsDatabase[sectionName];
-
-    appsToShow.forEach(app => {
-        const appElement = document.createElement('div');
-        appElement.className = 'app-item';
-        appElement.innerHTML = 
-            <img src="${app.icon}" alt="${app.name}" class="app-avatar">
-            <span class="app-name">${app.name}</span>
-        ;
-
-        appElement.onclick = () => {
-            if (window.Telegram && Telegram.WebApp) {
-                Telegram.WebApp.openLink(app.url);
-            } else {
-                window.open(app.url, '_blank');
-            }
-        };
-        appsGrid.appendChild(appElement);
-    });
-}
-
-// Отладочный код
-console.log("App.js загружен");
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOM загружен");
-    
-    // Добавляем обработчики для кнопок
-    document.querySelectorAll('.menu-btn').forEach(btn => {
-        btn.onclick = function() {
-            const section = this.textContent === 'Биржи' ? 'exchanges' : 'channels';
-            showApps(section);
-        };
-    });
-    
-    // Показываем раздел по умолчанию
-    showApps('channels');
-});
+    const navButtons = document.querySelectorAll('.nav-btn');
+    const screens = document.querySelectorAll('.screen');
+    const exchangeButtons = document.querySelectorAll('.exchange-btn');
+    const screenTitle = document.getElementById('screen-title');
 
-// Проверка загрузки изображений
-setTimeout(function() {
-    ["images/i (2).webp", "images/i (3).webp", "images/i_11.webp"].forEach(src => {
-        const img = new Image();
-        img.onload = function() { console.log("Изображение загружено:", src); };
-        img.onerror = function() { console.error("Ошибка загрузки изображения:", src); };
-        img.src = src;
+    // Инициализация Telegram Web App
+    window.Telegram.WebApp.expand();
+    window.Telegram.WebApp.enableClosingConfirmation();
+
+    // Обработчик навигации
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const target = button.getAttribute('data-target');
+            
+            // Обновляем активную кнопку
+            navButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            
+            // Показываем соответствующий экран
+            screens.forEach(screen => screen.classList.add('hidden'));
+            document.getElementById(target).classList.remove('hidden');
+            
+            // Обновляем заголовок
+            screenTitle.textContent = button.textContent;
+        });
     });
-}, 1000);
+
+    // Обработчик кнопок бирж
+    exchangeButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const url = button.getAttribute('data-url');
+            window.Telegram.WebApp.openLink(url);
+        });
+    });
+
+    // Обработчик кнопки "Назад"
+    BackButton.onClick(() => {
+        window.Telegram.WebApp.close();
+    });
+    
+    BackButton.show();
+});
