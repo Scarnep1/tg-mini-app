@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navButtons = document.querySelectorAll('.nav-btn');
     const screens = document.querySelectorAll('.screen');
     const exchangeButtons = document.querySelectorAll('.exchange-btn');
+    const menuCards = document.querySelectorAll('.menu-card');
     const screenTitle = document.getElementById('screen-title');
 
     // Инициализация Telegram Web App
@@ -33,6 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
     exchangeButtons.forEach(button => {
         button.addEventListener('click', () => {
             const url = button.getAttribute('data-url');
+            window.Telegram.WebApp.openLink(url);
+        });
+    });
+
+    // Обработчик карточек меню
+    menuCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const url = card.getAttribute('data-url');
             window.Telegram.WebApp.openLink(url);
         });
     });
