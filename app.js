@@ -1,14 +1,12 @@
 const appsDatabase = {
-  'provее': [
-    { name: "Provee 1", url: "https://provee1.com", icon: "images/provee1-icon.png" },
-    { name: "Provee 2", url: "https://provee2.com", icon: "images/provee2-icon.png" }
-  ],
   'exchanges': [
     { name: "Binance", url: "https://binance.com", icon: "images/binance-icon.png" },
     { name: "Bybit", url: "https://bybit.com", icon: "images/bybit-icon.png" }
   ],
   'channels': [
-    { name: "Крутой канал", url: "https://t.me/cool_channel", icon: "images/channel-icon.png" }
+    { name: "Мой канал", url: "https://t.me/your_channel", icon: "images/channel-icon.png" },
+    { name: "Крипто новости", url: "https://t.me/crypto_news", icon: "images/news-icon.png" },
+    { name: "Трейдинг", url: "https://t.me/trading_channel", icon: "images/trading-icon.png" }
   ]
 };
 
@@ -22,8 +20,8 @@ function showApps(sectionName) {
     const appElement = document.createElement('div');
     appElement.className = 'app-item';
     appElement.innerHTML = 
-      <img src="${app.icon}" alt="${app.name}">
-      <span>${app.name}</span>
+      <img src="${app.icon}" alt="${app.name}" class="app-avatar">
+      <span class="app-name">${app.name}</span>
     ;
 
     appElement.onclick = () => {
@@ -38,6 +36,7 @@ function showApps(sectionName) {
   });
 }
 
+// Показываем раздел "Каналы" по умолчанию
 document.addEventListener('DOMContentLoaded', function() {
-  showApps('provее');
+  showApps('channels');
 });
