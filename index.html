@@ -1,22 +1,37 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой Apps Бот</title>
+    <title>Crypto Exchanges App</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <div class="apps-grid" id="apps-grid">
-        <!-- Иконки будут создаваться здесь автоматически скриптом app.js -->
+    <div class="container">
+        <header>
+            <h1 id="screen-title">Меню</h1>
+        </header>
+        
+        <main id="content">
+            <!-- Контент будет меняться в зависимости от раздела -->
+            <div class="screen" id="menu-screen">Пусто</div>
+            <div class="screen hidden" id="exchanges-screen">
+                <div class="exchange-buttons">
+                    <button class="exchange-btn" data-url="https://www.bybit.com/">Bybit</button>
+                    <button class="exchange-btn" data-url="https://www.mexc.com/">MEXC</button>
+                    <button class="exchange-btn" data-url="https://www.bitget.com/">Bitget</button>
+                </div>
+            </div>
+            <div class="screen hidden" id="profile-screen">Пусто</div>
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-target="menu-screen">Меню</button>
+            <button class="nav-btn" data-target="exchanges-screen">Биржи</button>
+            <button class="nav-btn" data-target="profile-screen">Профиль</button>
+        </nav>
     </div>
-
-    <nav class="bottom-menu">
-        <button class="menu-btn" data-section="exchanges">Биржи</button>
-        <button class="menu-btn" data-section="channels">Каналы</button>
-    </nav>
-
     <script src="app.js"></script>
 </body>
 </html>
