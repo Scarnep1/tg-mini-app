@@ -1,12 +1,12 @@
 const appsDatabase = {
   'exchanges': [
-    { name: "Binance", url: "https://binance.com", icon: "images/binance-icon.png" },
-    { name: "Bybit", url: "https://bybit.com", icon: "images/bybit-icon.png" }
+    { name: "Binance", url: "https://binance.com", icon: "images/i (2).webp" },
+    { name: "Bybit", url: "https://bybit.com", icon: "images/i (2).webp" }
   ],
   'channels': [
     { name: "Мой канал", url: "https://t.me/chat_hamster_gamedev", icon: "images/i (3).webp" },
-    { name: "Крипто новости", url: "https://t.me/crypto_news", icon: "images/news-icon.png" },
-    { name: "Трейдинг", url: "https://t.me/trading_channel", icon: "images/trading-icon.png" }
+    { name: "Крипто новости", url: "https://t.me/hamster_king_ru", icon: "images/i (2).webp" },
+    { name: "Трейдинг", url: "https://t.me/hamster_kombat_gamedev_heroes", icon: "images/i (2).webp" }
   ]
 };
 
