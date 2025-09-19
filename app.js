@@ -4,7 +4,7 @@ const appsDatabase = {
     { name: "Bybit", url: "https://bybit.com", icon: "images/bybit-icon.png" }
   ],
   'channels': [
-    { name: "Мой канал", url: "https://t.me/chat_hamster_gamedev", icon: "images/channel-icon.png" },
+    { name: "Мой канал", url: "https://t.me/chat_hamster_gamedev", icon: "images/i (3).webp" },
     { name: "Крипто новости", url: "https://t.me/crypto_news", icon: "images/news-icon.png" },
     { name: "Трейдинг", url: "https://t.me/trading_channel", icon: "images/trading-icon.png" }
   ]
