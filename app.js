@@ -1,4 +1,33 @@
-// Убедимся, что код выполняется
+// // Отладочный код - удалить после исправления
+console.log("App.js загружен");
+
+// Проверяем, что элементы существуют
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM загружен");
+    
+    const appsGrid = document.getElementById('apps-grid');
+    const menuButtons = document.querySelectorAll('.menu-btn');
+    
+    console.log("appsGrid существует:", !!appsGrid);
+    console.log("Кнопок меню найдено:", menuButtons.length);
+    
+    // Проверяем обработчики кнопок
+    menuButtons.forEach(btn => {
+        console.log("Кнопка:", btn.textContent, "onclick:", btn.onclick);
+        btn.onclick = function() {
+            console.log("Нажата кнопка:", this.textContent);
+            const section = this.getAttribute('data-section') || 
+                           (this.textContent === 'Биржи' ? 'exchanges' : 'channels');
+            showApps(section);
+        };
+    });
+    
+    // Показываем раздел по умолчанию
+    showApps('channels');
+});
+
+// ... остальной код без изменений
+Убедимся, что код выполняется
 console.log("App.js loaded successfully!");
 
 const appsDatabase = {
