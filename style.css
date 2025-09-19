@@ -1,4 +1,3 @@
-/* Временные стили для отладки */
 body:before {
     content: "DEBUG: CSS loaded";
     position: fixed;
