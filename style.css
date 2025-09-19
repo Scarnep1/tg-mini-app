@@ -1,83 +1,12 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background-image: url('images/i (1).webp');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+/* Временные стили для отладки */
+body:before {
+    content: "DEBUG: CSS loaded";
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    background: rgba(0,0,0,0.7);
     color: white;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-.apps-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2 колонки для лучшего отображения на мобильных */
-    gap: 15px;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-
-.app-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 15px;
-    padding: 15px;
-    cursor: pointer;
-    text-align: center;
-    backdrop-filter: blur(5px);
-    transition: transform 0.2s, background 0.2s;
-}
-
-.app-item:hover {
-    transform: scale(1.05);
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.app-avatar {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-    object-fit: cover;
-}
-
-.app-name {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.bottom-menu {
-    display: flex;
-    justify-content: space-around;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 12px 0;
-}
-
-.menu-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: background 0.2s;
-}
-
-.menu-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* Стиль для активной кнопки меню */
-.menu-btn.active {
-    background: rgba(255, 255, 255, 0.3);
-    font-weight: bold;
+    padding: 5px;
+    z-index: 10000;
+    font-size: 12px;
 }
