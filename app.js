@@ -94,3 +94,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Проверка загрузки изображений
+function checkImages() {
+    const imagesToCheck = [
+        "images/i (2).webp",
+        "images/i (3).webp",
+        "images/i_11.webp" // ваш фон
+    ];
+    
+    imagesToCheck.forEach(src => {
+        const img = new Image();
+        img.onload = function() {
+            console.log("Изображение загружено:", src);
+        };
+        img.onerror = function() {
+            console.error("Ошибка загрузки изображения:", src);
+        };
+        img.src = src;
+    });
+}
+
+// Запускаем проверку после загрузки страницы
+setTimeout(checkImages, 1000);
