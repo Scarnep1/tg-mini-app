@@ -1,3 +1,6 @@
+// Убедимся, что код выполняется
+console.log("App.js loaded successfully!");
+
 const appsDatabase = {
     'exchanges': [
         { name: "Binance", url: "https://binance.com", icon: "images/i (2).webp" },
@@ -10,10 +13,23 @@ const appsDatabase = {
     ]
 };
 
-function showApps(sectionName) {
+// Сделаем функцию глобальной для доступа из HTML
+window.showApps = function(sectionName) {
+    console.log("Showing section:", sectionName);
+    
     const appsGrid = document.getElementById('apps-grid');
+    if (!appsGrid) {
+        console.error("Element with id 'apps-grid' not found!");
+        return;
+    }
+    
     appsGrid.innerHTML = "";
+    
     const appsToShow = appsDatabase[sectionName];
+    if (!appsToShow) {
+        console.error("Section not found:", sectionName);
+        return;
+    }
 
     appsToShow.forEach(app => {
         const appElement = document.createElement('div');
@@ -24,17 +40,28 @@ function showApps(sectionName) {
         ;
 
         appElement.onclick = () => {
+            console.log("Opening:", app.url);
             if (window.Telegram && Telegram.WebApp) {
                 Telegram.WebApp.openLink(app.url);
             } else {
                 window.open(app.url, '_blank');
             }
         };
+        
         appsGrid.appendChild(appElement);
     });
 }
 
 // Показываем раздел "Каналы" по умолчанию
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOM fully loaded");
     showApps('channels');
+    
+    // Добавляем обработчики для кнопок (на всякий случай)
+    document.querySelectorAll('.menu-btn').forEach(btn => {
+        const section = btn.getAttribute('data-section');
+        if (section) {
+            btn.onclick = () => showApps(section);
+        }
+    });
 });
